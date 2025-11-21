@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="cine.controller.LoginController"
+      spacing="10" alignment="CENTER" prefWidth="400" prefHeight="250"
+      style="-fx-padding: 20;">
+
+    <Label text="Login" />
+
+    <TextField fx:id="txtEmail" promptText="Email" />
+    <PasswordField fx:id="txtPassword" promptText="Contraseña" />
+
+    <Button text="Ingresar" onAction="#onLogin" />
+    <Button text="Registrarse" onAction="#onRegister" />
+
+
+    <Label fx:id="lblMensaje" textFill="red" />
+
+</VBox>
+

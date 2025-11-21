@@ -7,11 +7,13 @@ import java.io.Serializable;
 public class Sala implements Serializable {
     private int numeroSala;
     private String pelicula;
+    private double precioEntrada;
     private Butaca[][] mapa; // filas x columnas
 
-    public Sala(int numeroSala, String pelicula, int filas, int columnas) {
+    public Sala(int numeroSala, String pelicula, double precioEntrada, int filas, int columnas) {
         this.numeroSala = numeroSala;
         this.pelicula = pelicula;
+        this.precioEntrada = precioEntrada;
         this.mapa = new Butaca[filas][columnas];
         for (int f = 0; f < filas; f++) {
             for (int c = 0; c < columnas; c++) {
@@ -22,6 +24,12 @@ public class Sala implements Serializable {
 
     public int getNumeroSala() { return numeroSala; }
     public String getPelicula() { return pelicula; }
+        public double getPrecioEntrada() {   // 💰 getter nuevo
+        return precioEntrada;
+    }
+            public void setPrecioEntrada(double precioEntrada) { // opcional
+        this.precioEntrada = precioEntrada;
+    }
     public int getFilas() { return mapa.length; }
     public int getColumnas() { return mapa[0].length; }
 
