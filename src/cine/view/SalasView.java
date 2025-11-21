@@ -23,24 +23,39 @@ public class SalasView {
         Label titulo = new Label("Salas disponibles");
         titulo.setStyle("-fx-font-size: 16; -fx-font-weight: bold;");
 
-        TableView<Sala> tabla = new TableView<>(CineData.getSalas());
+        // Tabla SIN columnas iniciales
+        TableView<Sala> tabla = new TableView<>();
         tabla.setPrefHeight(300);
 
+        // Le ponemos los datos
+        tabla.setItems(CineData.getSalas());
+
+        // Limpiamos cualquier columna anterior por las dudas
+        tabla.getColumns().clear();
+
+        // Columnas que SÍ queremos
         TableColumn<Sala, String> cNumero = new TableColumn<>("Sala");
         TableColumn<Sala, String> cPelicula = new TableColumn<>("Película");
+        TableColumn<Sala, String> cPrecio = new TableColumn<>("Precio");
         TableColumn<Sala, String> cLibres = new TableColumn<>("Butacas libres");
 
         cNumero.setCellValueFactory(
                 p -> new SimpleStringProperty(String.valueOf(p.getValue().getNumeroSala()))
         );
+
         cPelicula.setCellValueFactory(
                 p -> new SimpleStringProperty(p.getValue().getPelicula())
         );
+
+        cPrecio.setCellValueFactory(
+                p -> new SimpleStringProperty("$" + p.getValue().getPrecioEntrada())
+        );
+
         cLibres.setCellValueFactory(
                 p -> new SimpleStringProperty(String.valueOf(p.getValue().contarLibres()))
         );
 
-        tabla.getColumns().addAll(cNumero, cPelicula, cLibres);
+        tabla.getColumns().addAll(cNumero, cPelicula, cPrecio, cLibres);
 
         Button btnButacas = new Button("Ver butacas");
 
@@ -60,3 +75,4 @@ public class SalasView {
         return root;
     }
 }
+

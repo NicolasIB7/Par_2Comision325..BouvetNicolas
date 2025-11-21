@@ -67,10 +67,12 @@ public class ButacasView {
         root.setCenter(grid);
 
         // ---- ZONA INFERIOR: info + botones ----
-        Label lblSeleccion = new Label("Butaca seleccionada: ninguna");
+        Label lblSeleccion = new Label("Butaca seleccionada: ");
 
         Button btnConfirmar = new Button("Confirmar selección");
         Button btnVolver = new Button("Volver a Salas");
+        
+        
 
         btnConfirmar.setOnAction(e -> {
             if (filaSeleccionada == -1 || nroSeleccionado == -1) {

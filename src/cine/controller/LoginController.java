@@ -46,6 +46,7 @@ public class LoginController {
             lblMensaje.setText("Email o contraseña incorrectos");
         } else {
             lblMensaje.setText("");
+            CineData.setClienteActual(encontrado);
 
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             SalasView salasView = new SalasView(stage);

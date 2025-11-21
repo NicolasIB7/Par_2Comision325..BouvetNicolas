@@ -10,12 +10,14 @@ public class Entrada implements Serializable {
     private Sala sala;
     private int fila;
     private int numero;
+    private double precio;
     private LocalDateTime fechaHora;
 
-    public Entrada(Cliente cliente, Sala sala, int fila, int numero, LocalDateTime fechaHora) {
+    public Entrada(Cliente cliente, Sala sala, int fila, int numero,double precio, LocalDateTime fechaHora) {
         this.cliente = cliente;
         this.sala = sala;
         this.fila = fila;
+        this.precio = precio;
         this.numero = numero;
         this.fechaHora = fechaHora;
     }

@@ -32,7 +32,8 @@ public class Cine implements Serializable {
         if (cli == null || sala == null) return false;
         if (!sala.estaLibre(fila, numero)) return false;
         sala.getButaca(fila, numero).ocupar();
-        entradas.add(new Entrada(cli, sala, fila, numero, LocalDateTime.now()));
+       entradas.add(new Entrada(cli, sala, fila, numero, sala.getPrecioEntrada(), LocalDateTime.now()));
+
         return true;
     }
 
@@ -40,8 +41,8 @@ public class Cine implements Serializable {
     public void cargarDemo() {
         clientes.add(new Cliente("Ana", "ana@mail.com", "1234"));
         clientes.add(new Cliente("Luis", "luis@mail.com", "1234"));
-        salas.add(new Sala(1, "Interstellar", 10, 12));
-        salas.add(new Sala(2, "Oppenheimer", 10, 12));
+        salas.add(new Sala(1, "Interstellar", 1200, 10, 12));
+        salas.add(new Sala(2, "Oppenheimer",2000, 10, 12));
     }
 }
 

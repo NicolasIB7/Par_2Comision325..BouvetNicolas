@@ -64,7 +64,15 @@ public class CineData {
             return false;
         }
         sala.getButaca(fila, numero).ocupar();
-        entradas.add(new Entrada(cli, sala, fila, numero, LocalDateTime.now()));
+        entradas.add(new Entrada(
+        cli,
+        sala,
+        fila,
+        numero,
+        sala.getPrecioEntrada(),    
+        LocalDateTime.now()
+));
+
         return true;
     }
 
