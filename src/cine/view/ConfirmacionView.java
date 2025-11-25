@@ -25,8 +25,8 @@ public class ConfirmacionView {
         Label lblTitulo = new Label("Confirmación de compra");
         lblTitulo.setStyle("-fx-font-size: 16; -fx-font-weight: bold;");
 
-        Label lblCliente = new Label("Cliente: " +
-                cliente.getNombre() + " (" + cliente.getEmail() + ")");
+        Label lblCliente = new Label("Cliente: "
+                + cliente.getNombre() + " (" + cliente.getEmail() + ")");
 
         Label lblPelicula = new Label("Película: " + sala.getPelicula());
         Label lblSala = new Label("Sala: " + sala.getNumeroSala());
@@ -43,7 +43,7 @@ public class ConfirmacionView {
 
             if (ok) {
                 lblMensaje.setText("Compra realizada correctamente.");
-
+                cine.storage.CineStorage.guardarDatos();
                 // Volver a salas
                 SalasView salasView = new SalasView(stage);
                 Scene sceneSalas = new Scene(salasView.getRoot(), 600, 400);
@@ -77,4 +77,3 @@ public class ConfirmacionView {
         return root;
     }
 }
-

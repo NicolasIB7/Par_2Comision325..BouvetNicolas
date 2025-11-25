@@ -21,19 +21,16 @@ public class SalasView {
         root.setPadding(new Insets(20));
 
         Label titulo = new Label("Salas disponibles");
+        stage.setTitle("Cine - Salas");
         titulo.setStyle("-fx-font-size: 16; -fx-font-weight: bold;");
 
-        // Tabla SIN columnas iniciales
         TableView<Sala> tabla = new TableView<>();
         tabla.setPrefHeight(300);
 
-        // Le ponemos los datos
         tabla.setItems(CineData.getSalas());
 
-        // Limpiamos cualquier columna anterior por las dudas
         tabla.getColumns().clear();
 
-        // Columnas que SÍ queremos
         TableColumn<Sala, String> cNumero = new TableColumn<>("Sala");
         TableColumn<Sala, String> cPelicula = new TableColumn<>("Película");
         TableColumn<Sala, String> cPrecio = new TableColumn<>("Precio");
@@ -75,4 +72,3 @@ public class SalasView {
         return root;
     }
 }
-

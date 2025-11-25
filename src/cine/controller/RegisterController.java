@@ -1,4 +1,3 @@
-
 package cine.controller;
 
 import cine.model.CineData;
@@ -11,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import cine.storage.CineStorage;
 
 public class RegisterController {
 
@@ -45,6 +45,7 @@ public class RegisterController {
             lblMensaje.setText("El email ya está registrado");
         } else {
             lblMensaje.setText("Registrado correctamente");
+            CineStorage.guardarDatos();
         }
     }
 
@@ -54,9 +55,9 @@ public class RegisterController {
             Stage stage = (Stage) txtNombre.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/cine/view/Login.fxml"));
             stage.setScene(new Scene(root, 400, 250));
+            stage.setTitle("Cine - Login");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
-

@@ -61,6 +61,7 @@ public class LoginController {
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/cine/view/Register.fxml"));
             stage.setScene(new Scene(root, 400, 350));
+            stage.setTitle("Cine - Registro clientes");
         } catch (Exception e) {
             e.printStackTrace();
         }

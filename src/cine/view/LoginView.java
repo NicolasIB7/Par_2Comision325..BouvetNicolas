@@ -1,4 +1,3 @@
-
 package cine.view;
 
 import cine.model.CineData;

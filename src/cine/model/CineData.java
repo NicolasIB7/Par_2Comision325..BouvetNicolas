@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cine.model;
 
 import javafx.collections.FXCollections;
@@ -25,7 +21,6 @@ public class CineData {
     public static ObservableList<Entrada> getEntradas() {
         return entradas;
     }
-// arriba, junto con el resto de atributos estáticos
     private static Cliente clienteActual;
 
     public static Cliente getClienteActual() {
@@ -36,26 +31,26 @@ public class CineData {
         clienteActual = c;
     }
 
-// método de login
     public static Cliente login(String email, String password) {
-        return clientes.stream()
-                .filter(c -> c.getEmail().equalsIgnoreCase(email)
-                && c.getPassword().equals(password))
-                .findFirst()
-                .orElse(null);
-    }
-
-    // registrar cliente (email único)
-    public static boolean registrarCliente(Cliente c) {
-        boolean existe = clientes.stream()
-                .anyMatch(x -> x.getEmail().equalsIgnoreCase(c.getEmail()));
-        if (existe) {
-            return false;
+        for (Cliente c : clientes) {
+            if (c.getEmail().equalsIgnoreCase(email)
+                    && c.getPassword().equals(password)) {
+                return c;
+            }
         }
-        return clientes.add(c);
+        return null;
     }
 
-    // comprar entrada (marca butaca ocupada y crea Entrada)
+    public static boolean registrarCliente(Cliente c) {
+        for (Cliente cli : clientes) {
+            if (cli.getEmail().equalsIgnoreCase(c.getEmail())) {
+                return false;
+            }
+        }
+        clientes.add(c);
+        return true;
+    }
+
     public static boolean comprarEntrada(Cliente cli, Sala sala, int fila, int numero) {
         if (cli == null || sala == null) {
             return false;
@@ -65,29 +60,26 @@ public class CineData {
         }
         sala.getButaca(fila, numero).ocupar();
         entradas.add(new Entrada(
-        cli,
-        sala,
-        fila,
-        numero,
-        sala.getPrecioEntrada(),    
-        LocalDateTime.now()
-));
+                cli,
+                sala,
+                fila,
+                numero,
+                sala.getPrecioEntrada(),
+                LocalDateTime.now()
+        ));
 
         return true;
     }
 
-    // datos de prueba
     public static void cargarDatosDemo() {
         if (!clientes.isEmpty() || !salas.isEmpty()) {
-            return; // para no repetir
+            return;
         }
-        clientes.addAll(
-                new Cliente("Ana", "ana@mail.com", "1234"),
-                new Cliente("Luis", "luis@mail.com", "1234")
-        );
         salas.addAll(
-                new Sala(1, "Interstellar", 120, 10, 12),
-                new Sala(2, "Oppenheimer", 1200, 8, 10)
+                new Sala(1, "Avengers", 5000, 10, 12),
+                new Sala(2, "El conjuro 4", 7500, 8, 10),
+                new Sala(3, "Rápido y furioso 11", 9000, 8, 10),
+                new Sala(4, "Weapons", 5000, 10, 12)
         );
 
     }
