@@ -44,7 +44,6 @@ public class ConfirmacionView {
             if (ok) {
                 lblMensaje.setText("Compra realizada correctamente.");
                 cine.storage.CineStorage.guardarDatos();
-                // Volver a salas
                 SalasView salasView = new SalasView(stage);
                 Scene sceneSalas = new Scene(salasView.getRoot(), 600, 400);
                 stage.setScene(sceneSalas);
